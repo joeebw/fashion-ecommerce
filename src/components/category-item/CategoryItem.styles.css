@@ -1,0 +1,7 @@
+.category-card {
+  position: relative;
+}
+
+.category-card:hover .image-category {
+  transform: scale(1.2);
+}
