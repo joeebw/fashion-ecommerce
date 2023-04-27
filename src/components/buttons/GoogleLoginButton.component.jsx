@@ -1,4 +1,5 @@
 import { handleSignInWithGoogle } from "../../utils/firebase"
+import Button from "./Button.component";
 
 function GoogleLoginButton() {
   
@@ -7,13 +8,13 @@ function GoogleLoginButton() {
   }
 
   return (
-    <button 
-      className="btn btn-info w-40 text-white hover:text-black"
+    <Button 
       type="button"
       onClick={buttonClickHandler}
+      selectButton='google'
     >
-      Login with Google
-    </button>
+      Sign In with Google
+    </Button>
   )
 }
 

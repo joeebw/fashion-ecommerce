@@ -3,7 +3,8 @@ import {
   getAuth, 
   signInWithPopup, 
   GoogleAuthProvider, 
-  createUserWithEmailAndPassword 
+  createUserWithEmailAndPassword ,
+  signInWithEmailAndPassword
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
@@ -24,7 +25,7 @@ const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
 
-//Ensure Document User Created
+//Create user document
 async function createUserDocument(user, displayNameEmailPass) {
   try {
     const docRef = doc(db, "users", user.uid);
@@ -37,7 +38,7 @@ async function createUserDocument(user, displayNameEmailPass) {
       const {displayName, email} = user;
       const createdAt = new Date();
       const data = {
-        displayName: displayName ? displayName : displayNameEmailPass,
+        displayName: displayName ?? displayNameEmailPass,
         email,
         createdAt
       }
@@ -83,4 +84,28 @@ export function createAuthWithEmailAndPassword(email, password, displayName) {
         return console.error(error);
     }
   });
+}
+
+// Handles email and password login
+export function handleLoginSubmit(email, password) {
+  if (!email || !password) return;
+
+  return signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    console.log(user);
+    return user;
+    
+    
+  })
+  .catch((error) => {
+    switch (error.code) {
+      case 'auth/wrong-password':
+        return alert('Email and password combination is incorrect');
+      case 'auth/user-not-found':
+        return alert('user not registered');
+      default:
+        return console.log(error.code);
+    }
+  })
 }
