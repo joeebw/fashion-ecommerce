@@ -1,8 +1,8 @@
-import { useState } from "react";
-import GoogleLoginButton from "../buttons/GoogleLoginButton.component"
+import { useState, useContext } from "react";
 import { createAuthWithEmailAndPassword } from "../../utils/firebase";
 import InputForm from "../input form/InputForm.component";
 import Button from "../buttons/Button.component";
+import { UserContext } from "../../context/user.context";
 
 const defaultFormField = {
   displayName: '',
@@ -19,12 +19,14 @@ function SignUpForm() {
     setFormField(defaultFormField);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     // Check if the two passwords are correct
     if (password !== password2) return alert('Passwords do not match')
     // Run function to create auth with email and password
-    createAuthWithEmailAndPassword(email, password, displayName);
+    const user = await createAuthWithEmailAndPassword(email, password, displayName);
+    // Reset the form form field
+    if (!user) return;
     resetFormField();
   }
 

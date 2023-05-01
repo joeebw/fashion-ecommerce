@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import GoogleLoginButton from "../buttons/GoogleLoginButton.component"
 import InputForm from "../input form/InputForm.component";
 import Button from "../buttons/Button.component";
 import { handleLoginSubmit } from "../../utils/firebase";
+import { UserContext } from "../../context/user.context";
 
 const defaultFormField = {
   email: '',
@@ -22,7 +23,7 @@ function SignIn() {
     e.preventDefault();
     // Run the function to handle email and password login
     const user = await handleLoginSubmit(email, password);
-    // If there is an error don't reset the form field
+    //Reset the form field if user is login
     if (!user) return;
     resetFormField();
   }

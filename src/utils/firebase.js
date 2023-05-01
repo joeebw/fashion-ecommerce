@@ -4,7 +4,9 @@ import {
   signInWithPopup, 
   GoogleAuthProvider, 
   createUserWithEmailAndPassword ,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
@@ -30,10 +32,8 @@ async function createUserDocument(user, displayNameEmailPass) {
   try {
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
-  
-    if (docSnap.exists()) {
-      console.log("Document alredy exist!", docSnap);
-    } else {
+
+    if (!docSnap.exists()) {
       // Data of the document user
       const {displayName, email} = user;
       const createdAt = new Date();
@@ -51,7 +51,7 @@ async function createUserDocument(user, displayNameEmailPass) {
 } 
 
 
-// Make an authentication with google and obtain a user
+// Make an authentication with google and obtain the user
 export function handleSignInWithGoogle() {
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -70,11 +70,12 @@ export function handleSignInWithGoogle() {
 export function createAuthWithEmailAndPassword(email, password, displayName) {
   if (!email || !password || !displayName) return;
 
-  createUserWithEmailAndPassword(auth, email, password)
+  return createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
     //Create a user document
     createUserDocument(user, displayName);
+    return user;
   })
   .catch((error) => {
     switch (error.code) {
@@ -93,7 +94,6 @@ export function handleLoginSubmit(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
-    console.log(user);
     return user;
     
     
@@ -108,4 +108,17 @@ export function handleLoginSubmit(email, password) {
         return console.log(error.code);
     }
   })
+}
+
+// Sign out user auth
+export function signOutUser() {
+  signOut(auth).then()
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
+// auth changed lister for users
+export function authStateChangedListener(callback) {
+  return onAuthStateChanged(auth, callback);
 }
