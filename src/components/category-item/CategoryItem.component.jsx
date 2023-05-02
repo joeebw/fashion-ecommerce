@@ -11,7 +11,7 @@ function CategoryItem({category}) {
         style={{backgroundImage: `url(${imageUrl})`}} 
       /> 
       <div className="absolute bg-[#e4e3e768] opacity flex flex-col items-center justify-center w-40 h-32 border-2 border-black">
-        <h2 className="card-title">{title}</h2>
+        <h2 className="card-title">{title.toUpperCase()}</h2>
         <p>Shop Now</p>
       </div>
     </div>

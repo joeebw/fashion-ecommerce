@@ -1,0 +1,9 @@
+.button-card, 
+.bg-overlay {
+  display: none;
+}
+
+.card-item:hover .button-card, 
+.card-item:hover .bg-overlay {
+  display: block;
+}
