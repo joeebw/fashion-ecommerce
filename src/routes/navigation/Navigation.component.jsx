@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom"
 import { signOutUser } from "../../utils/firebase"
 import { UserContext } from "../../context/user.context";
-import CardIcon from "../../components/card-icon/CardIcon.component";
-import CardDropdown from "../../components/card-dropdown/CardDropdown.component";
+import CartIcon from "../../components/cart-icon/CartIcon.component";
+import CartDropdown from "../../components/cart-dropdown/CartDropdown.component";
+import { CartContext } from "../../context/cart.context";
 
 function Navigation() {
   const {currentUser} = useContext(UserContext);
+  const {isCartOpen} = useContext(CartContext);
 
   function handleSignOut() {
     signOutUser();
@@ -14,7 +16,7 @@ function Navigation() {
 
   return (
     <>
-      <div className="navbar bg-[#f5f5f5] px-4">
+      <div className="relative navbar bg-[#f5f5f5] px-4">
         <div className="flex-1">
           <Link to={'/'} className="btn btn-ghost normal-case text-2xl">MOONLIT WOLVES</Link>
         </div>
@@ -29,9 +31,9 @@ function Navigation() {
               <h4>SIGN IN</h4>
             </Link>
           }
-          <CardIcon/>
+          <CartIcon/>
         </div>
-        <CardDropdown/>
+        {isCartOpen && <CartDropdown/>}
       </div>
       <Outlet/>
     </>
