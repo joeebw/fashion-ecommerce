@@ -1,8 +1,15 @@
-import './productCard.styles.css'
+import { useContext } from 'react';
 import Button from '../buttons/Button.component';
+import { CartContext } from '../../context/cart.context'; 
+import './productCard.styles.css'
 
 function ProductCard({product}) {
   const {imageUrl, name, price} = product;
+  const {addItemToCart} = useContext(CartContext);
+
+  function handleAddCartItem() {
+    addItemToCart(product);
+  }
 
   return (
     <div className='card-item relative cursor-pointer'>
@@ -14,6 +21,7 @@ function ProductCard({product}) {
             className='opacity-75'
             selectButton={'inverted'}
             size='large'
+            onClick={handleAddCartItem}
           >
             ADD TO CART
           </Button>
@@ -21,7 +29,7 @@ function ProductCard({product}) {
       </div>
       <div className='flex justify-between'>
         <span>{name}</span>
-        <span className='mr-4'>{price}</span>
+        <span className='mr-4'>{price}$</span>
       </div>
     </div>
   )
