@@ -6,7 +6,7 @@ function Shop() {
   const {products} = useContext(ProductsContext);
 
   return (
-    <div className="grid grid-cols-4 gap-6 overflow-x-hidden my-6 mx-3">
+    <div className="grid grid-cols-4 gap-6 overflow-x-hidden my-6 mx-9">
       {products.map((product) => 
         <ProductCard product={product} key={product.id}/>
       )}

@@ -29,7 +29,7 @@ function ProductCard({product}) {
       </div>
       <div className='flex justify-between'>
         <span>{name}</span>
-        <span className='mr-4'>{price}$</span>
+        <span className='mr-4'>${price}</span>
       </div>
     </div>
   )

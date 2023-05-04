@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { CartContext } from '../../context/cart.context'
 import Button from '../buttons/Button.component' 
 import CartItem from '../cart-item/CartItem.component';
+import {Link} from 'react-router-dom'
 
 function CartDropdown() {
   const {cartItems} = useContext(CartContext);
@@ -11,16 +12,17 @@ function CartDropdown() {
           <div className="card-body p-5 justify-between">
             <div className='h-72 overflow-y-auto pr-6'>
               {cartItems.map(product => 
-                <CartItem product={product}/>)
+                <CartItem product={product} key={product.id}/>)
               }
             </div>
-            <Button 
-              selectButton='inverted'
-              size='large'
-              className='self-center mt-3'
-            >
-              Check card
-            </Button>
+            <Link to='/checkout' className='self-center mt-3'>
+              <Button 
+                selectButton='inverted'
+                size='large'
+              >
+                Check card
+              </Button>
+            </Link>
           </div>
         </div>
   )
