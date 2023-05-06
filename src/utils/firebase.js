@@ -8,7 +8,14 @@ import {
   signOut,
   onAuthStateChanged
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, 
+  doc, 
+  setDoc, 
+  getDoc, 
+  collection, 
+  writeBatch, 
+  getDocs 
+} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -121,4 +128,33 @@ export function signOutUser() {
 // auth changed lister for users
 export function authStateChangedListener(callback) {
   return onAuthStateChanged(auth, callback);
+}
+
+// export async function addCategoriesDocumentsInCollections(categories) {
+//   const batch = writeBatch(db);
+//   const collectionRef = collection(db, "categories");
+
+//   categories.forEach(categorie => {
+//     const documentRef = doc(collectionRef, categorie.title);
+//     batch.set(documentRef, categorie)
+//     })
+
+//   // Commit the batch
+//   await batch.commit();
+
+//   console.log('successful operation');
+// }
+
+export async function getCategoriesAndDocuments() {
+  // Get a reference to the categories collection
+  const documentsRef = collection(db, "categories");
+
+  // Get all documents in the collection
+  const snapshot = await getDocs(documentsRef);
+  const categories = {};
+  snapshot.forEach((doc) => {
+    const {title, items} = doc.data();
+    categories[title.toLowerCase()] = items;
+  });
+  return categories;
 }
