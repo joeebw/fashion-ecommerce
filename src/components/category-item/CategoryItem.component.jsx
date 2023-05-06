@@ -1,11 +1,18 @@
+import {useNavigate} from 'react-router-dom'
 import './CategoryItem.styles.css'
 
 function CategoryItem({category}) {
   const {title,imageUrl} = category;
+  const navigate = useNavigate();
+
+  function handleChangeRoute(route) {
+    navigate(`shop/${route}`);
+  }
 
   return (
     <div 
       className="category-card flex justify-center items-center card w-full h-72 border-2 border-black cursor-pointer overflow-hidden"          
+      onClick={() => handleChangeRoute(title)}
     >
       <div className='image-category h-full w-full bg-cover bg-no-repeat ease-in duration-300' 
         style={{backgroundImage: `url(${imageUrl})`}} 
