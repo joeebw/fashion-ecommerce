@@ -29,7 +29,6 @@ const INITIAL_VALUE = {
 
 export function UserProvider({children}) {
   const [{currentUser}, dispatch] = useReducer(userReducer, INITIAL_VALUE);
-  // const [currentUser, setCurrentUser] = useState(null);
 
   function setCurrentUser(user) {
     dispatch({type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user})
