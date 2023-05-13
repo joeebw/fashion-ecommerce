@@ -1,12 +1,26 @@
-import './App.css'
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {setCurrentUser} from './store/user/user.action'
+import { authStateChangedListener } from './utils/firebase'
 import Home from './routes/home/home.component'
 import Navigation from './routes/navigation/Navigation.component'
 import Authentication from './routes/authentication/authentication.component'
 import Shop from './routes/shop/Shop.component'
 import Checkout from './routes/checkout/Checkout.component'
+import './App.css'
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = authStateChangedListener(user => {
+      dispatch(setCurrentUser(user));
+    })
+
+    return unsubscribe;
+  },[])
+
   return(
     <>
       <Routes>
