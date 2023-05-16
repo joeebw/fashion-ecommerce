@@ -1,13 +1,25 @@
-import { useContext } from "react"
-import { CartContext } from "../../context/cart.context"
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { selectCartCount } from "../../store/cart/cart.selector"; 
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 
 function CartIcon() {
-  const {setIsCartOpen, isCartOpen, totalItems} = useContext(CartContext);
-
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const totalItems = useSelector(selectCartCount);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   function toggleIsCartOpen() {
-    setIsCartOpen(!isCartOpen);
+    dispatch(setIsCartOpen(!isCartOpen))
   }
+
+  // Close Cart dropdown when changes the route path
+  useEffect(() => {
+    if (!isCartOpen) return
+    dispatch(setIsCartOpen(false))
+  }, [location])
 
   return (
     <div 

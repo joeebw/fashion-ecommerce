@@ -151,10 +151,5 @@ export async function getCategoriesAndDocuments() {
 
   // Get all documents in the collection
   const snapshot = await getDocs(documentsRef);
-  const categories = {};
-  snapshot.forEach((doc) => {
-    const {title, items} = doc.data();
-    categories[title.toLowerCase()] = items;
-  });
-  return categories;
+  return snapshot.docs.map(doc => doc.data())
 }

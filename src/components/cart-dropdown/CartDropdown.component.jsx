@@ -1,11 +1,11 @@
-import { useContext } from 'react'
-import { CartContext } from '../../context/cart.context'
+import {Link} from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { selectCartItems } from '../../store/cart/cart.selector';
 import Button from '../buttons/Button.component' 
 import CartItem from '../cart-item/CartItem.component';
-import {Link} from 'react-router-dom'
 
 function CartDropdown() {
-  const {cartItems} = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
 
   return (
         <div className="absolute z-20 right-11 top-16 card w-80 min-h-[300px] bg-base-100 shadow-xl">

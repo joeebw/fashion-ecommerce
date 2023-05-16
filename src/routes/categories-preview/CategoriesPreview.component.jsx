@@ -4,7 +4,6 @@ import CategoryPreview from "../../components/category-preview/CategoryPreview.c
 
 function CategoriesPreview() {
   const categories = useSelector(selectCategoriesMap);
-  // const {categories} = useContext(CategoriesContext);
   
   return (
     <div className='mx-9 my-6'>
