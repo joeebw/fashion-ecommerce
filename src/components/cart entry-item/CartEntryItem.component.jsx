@@ -1,25 +1,24 @@
-import { useSelector, useDispatch } from "react-redux";
-import { addItemToCart, removeItemToCart, decreaseItemToCart } from "../../store/cart/cart.action";
+import { useDispatch } from "react-redux";
+import { addItemToCart,decreaseItemToCart,removeItemToCart } from '../../store/cart/cart.reducer';
 import { selectCartItems } from "../../store/cart/cart.selector";
 import Divider from "../divider/Divider.component";
 
 function CartEntryItem({cartItem}) {
   const dispatch = useDispatch();
-  const cartItems = useSelector(selectCartItems);
   const {imageUrl, name, price, quantity} = cartItem;
 
   // Increase the quantity of cartItem
   function handleIncreaseCartItem() {
-    dispatch(addItemToCart(cartItems,cartItem));
+    dispatch(addItemToCart(cartItem));
   }
 
   function handleDecreaseCartItem() {
-    dispatch(decreaseItemToCart(cartItems ,cartItem))
+    dispatch(decreaseItemToCart(cartItem))
   }
 
   // Remove cartItem from cart
   function handleRemoveCartItem() {
-    dispatch(removeItemToCart(cartItems,cartItem));
+    dispatch(removeItemToCart(cartItem));
   }
 
   return (

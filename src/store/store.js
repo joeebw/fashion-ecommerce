@@ -1,4 +1,5 @@
-import {compose, applyMiddleware,createStore} from 'redux'
+// import {compose, applyMiddleware,createStore} from 'redux'
+import {configureStore} from '@reduxjs/toolkit'
 import {persistReducer, persistStore} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { rootReducer } from './root-reduce';
@@ -6,7 +7,7 @@ import logger from 'redux-logger'
 
 const middleware = [process.env.NODE_ENV === 'development' && logger].filter(Boolean);
 
-const composedEnhancer = compose(applyMiddleware(...middleware));
+// const composedEnhancer = compose(applyMiddleware(...middleware));
 
 // Setting redux-persist
 const persistConfig = {
@@ -18,6 +19,9 @@ const persistConfig = {
 // setting persisted reducer 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStore(persistedReducer, undefined, composedEnhancer);
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: middleware
+});
 
 export const persistor = persistStore(store);

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {setCurrentUser} from './store/user/user.action'
+import { setCurrentUser } from './store/user/user.reducer'
 import { authStateChangedListener } from './utils/firebase'
 import Home from './routes/home/home.component'
 import Navigation from './routes/navigation/Navigation.component'
