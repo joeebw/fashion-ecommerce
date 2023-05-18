@@ -1,8 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { createAuthWithEmailAndPassword } from "../../utils/firebase";
 import InputForm from "../input form/InputForm.component";
 import Button from "../buttons/Button.component";
-import { UserContext } from "../../context/user.context";
 
 const defaultFormField = {
   displayName: '',

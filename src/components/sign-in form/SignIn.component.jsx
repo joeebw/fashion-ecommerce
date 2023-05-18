@@ -1,9 +1,8 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import GoogleLoginButton from "../buttons/GoogleLoginButton.component"
 import InputForm from "../input form/InputForm.component";
 import Button from "../buttons/Button.component";
 import { handleLoginSubmit } from "../../utils/firebase";
-import { UserContext } from "../../context/user.context";
 
 const defaultFormField = {
   email: '',

@@ -1,19 +1,24 @@
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { addItemToCart,decreaseItemToCart,removeItemToCart } from '../../store/cart/cart.reducer';
+import { selectCartItems } from "../../store/cart/cart.selector";
 import Divider from "../divider/Divider.component";
-import { CartContext } from "../../context/cart.context";
 
 function CartEntryItem({cartItem}) {
+  const dispatch = useDispatch();
   const {imageUrl, name, price, quantity} = cartItem;
-  const {addItemToCart, removeItemToCart, decreaseItemToCart} = useContext(CartContext);
 
   // Increase the quantity of cartItem
   function handleIncreaseCartItem() {
-    addItemToCart(cartItem);
+    dispatch(addItemToCart(cartItem));
+  }
+
+  function handleDecreaseCartItem() {
+    dispatch(decreaseItemToCart(cartItem))
   }
 
   // Remove cartItem from cart
   function handleRemoveCartItem() {
-    removeItemToCart(cartItem);
+    dispatch(removeItemToCart(cartItem));
   }
 
   return (
@@ -24,7 +29,7 @@ function CartEntryItem({cartItem}) {
         <div>
           <i 
             className="fa-solid fa-less-than text-xl pr-2 cursor-pointer"
-            onClick={() => decreaseItemToCart(cartItem)}
+            onClick={handleDecreaseCartItem}
           >
           </i>
           <span className="relative bottom-[1px] text-lg">{quantity}</span>

@@ -1,11 +1,12 @@
-import { useContext } from "react"
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector";
 import Divider from "../../components/divider/Divider.component"
-import {CartContext} from '../../context/cart.context'
 import CartEntryItem from "../../components/cart entry-item/CartEntryItem.component";
 import CartTotal from "../../components/cart-total/CartTotal.component";
 
 function Checkout() {
-  const {cartItems} = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+
   return (
     <div className="flex flex-col items-center my-10">
       <div className="w-8/12">
