@@ -19,12 +19,12 @@ import { getFirestore,
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBZtzJ7ltzRm1MOaOAAnR6LG4yD5wWmbkI",
-  authDomain: "ecommerce-wolves.firebaseapp.com",
-  projectId: "ecommerce-wolves",
-  storageBucket: "ecommerce-wolves.appspot.com",
-  messagingSenderId: "484709560728",
-  appId: "1:484709560728:web:2b9f4825d121b10cc6fbed"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDERID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase

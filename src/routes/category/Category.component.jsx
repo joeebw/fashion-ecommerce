@@ -9,8 +9,6 @@ function Category() {
   const categories = useSelector(selectCategoriesMap);
   const [products, setProducts] = useState([]);
 
-  console.log('render category page');
-
   useEffect(() => {
     setProducts(categories[category]);
   }, [category])
