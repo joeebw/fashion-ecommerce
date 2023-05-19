@@ -22,7 +22,8 @@
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "reselect": "^4.1.8"
+    "reselect": "^4.1.8",
+    "stripe": "^12.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
