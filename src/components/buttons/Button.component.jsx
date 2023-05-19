@@ -1,5 +1,3 @@
-import React from 'react'
-
 const BUTTON_TYPE = {
   google:'btn-info text-white hover:text-black',
   normal: 'btn-active hover:bg-white hover:text-black',

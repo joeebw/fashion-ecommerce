@@ -3,6 +3,7 @@ import { selectCartItems } from "../../store/cart/cart.selector";
 import Divider from "../../components/divider/Divider.component"
 import CartEntryItem from "../../components/cart entry-item/CartEntryItem.component";
 import CartTotal from "../../components/cart-total/CartTotal.component";
+import PaymentForm from "../../components/payment-form/PaymentForm.component";
 
 function Checkout() {
   const cartItems = useSelector(selectCartItems);
@@ -20,6 +21,7 @@ function Checkout() {
         <Divider/>
         {cartItems.map(cartItem => <CartEntryItem key={cartItem.id} cartItem={cartItem}/>)}
         <CartTotal/>
+        <PaymentForm/>
       </div>
     </div>
   )
