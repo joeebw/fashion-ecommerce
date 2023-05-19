@@ -34,7 +34,7 @@ function PaymentForm() {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: currentUser ? currentUser.displayName : 'Guess',
+          name: currentUser ? currentUser.displayName : 'Guest',
         },
       },
     });
@@ -63,6 +63,7 @@ function PaymentForm() {
           selectButton='inverted' 
           className='self-end mt-6'
           type='submit'
+          disabled={isProcessingPayment}
         >
           Pay Now
         </Button>

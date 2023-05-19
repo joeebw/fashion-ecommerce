@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import { rootReducer } from './root-reduce';
 import logger from 'redux-logger'
 
-const middleware = [process.env.NODE_ENV === 'development' && logger].filter(Boolean);
+const middleware = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean);
 
 // const composedEnhancer = compose(applyMiddleware(...middleware));
 
