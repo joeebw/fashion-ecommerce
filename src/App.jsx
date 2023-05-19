@@ -10,6 +10,7 @@ import Shop from './routes/shop/Shop.component'
 import Checkout from './routes/checkout/Checkout.component'
 import './App.css'
 
+
 function App() {
   const dispatch = useDispatch();
 
