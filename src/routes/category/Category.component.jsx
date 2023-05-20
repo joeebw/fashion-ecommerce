@@ -11,7 +11,8 @@ function Category() {
 
   useEffect(() => {
     setProducts(categories[category]);
-  }, [category])
+  }, [category, categories])
+
 
   return (
     <div className='mx-9 my-6'>
