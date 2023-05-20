@@ -1,7 +1,7 @@
 const BUTTON_TYPE = {
   google:'btn-info text-white hover:text-black',
-  normal: 'btn-active hover:bg-white hover:text-black',
-  inverted: 'btn-outline bg-white'  
+  normal: 'btn-active text-white hover:bg-white hover:text-black',
+  inverted: 'btn-outline bg-white text-black hover:bg-black hover:text-white'  
 }
 
 const BUTTON_SIZE = {
