@@ -35,8 +35,8 @@ function SignUpForm() {
   }
 
   return (
-    <div className='flex self-start justify-start'>
-      <div className="card mx-4 w-[450px] border-2 border-gray-700">
+    <div className='flex self-start justify-center md:justify-start'>
+      <div className="card mx-4 w-full sm:w-[450px] border-2 border-gray-700">
         <div className="card-body">
           <h3 className="text-4xl font-semibold text-center my-4">Sign Up</h3>
           

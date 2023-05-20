@@ -15,10 +15,10 @@ function Category() {
 
   return (
     <div className='mx-9 my-6'>
-      <h3 className='text-3xl text-center font-medium mb-4'>
+      <h3 className='text-2xl sm:text-3xl text-center font-medium mb-4'>
         {category.toUpperCase()}
       </h3>
-      <div className="grid grid-cols-4 gap-6 overflow-x-hidden mb-14">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 overflow-x-hidden mb-14">
         {products && products.map(product => 
           <ProductCard product={product} key={product.id}/>)}
       </div>

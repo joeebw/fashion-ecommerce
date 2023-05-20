@@ -23,26 +23,26 @@ function CartEntryItem({cartItem}) {
 
   return (
     <>
-      <div className="grid grid-cols-5 justify-items-center items-center">
-        <img src={imageUrl} alt={name} className="h-48" />
-        <span>{name}</span>
+      <div className="grid grid-cols-5 gap-2 justify-items-center items-center">
+        <img src={imageUrl} alt={name} className="h-auto lg:h-48" />
+        <span className="text-xs lg:text-base">{name}</span>
         <div>
           <i 
-            className="fa-solid fa-less-than text-xl pr-2 cursor-pointer"
+            className="fa-solid fa-less-than text-sm lg:text-xl pr-2 cursor-pointer"
             onClick={handleDecreaseCartItem}
           >
           </i>
-          <span className="relative bottom-[1px] text-lg">{quantity}</span>
+          <span className="relative bottom-[1px] text-sm lg:text-lg">{quantity}</span>
           <i 
-            className="fa-solid fa-greater-than text-xl pl-2 cursor-pointer"
+            className="fa-solid fa-greater-than text-sm lg:text-xl pl-2 cursor-pointer"
             onClick={handleIncreaseCartItem}
           >
           </i>
         </div>
-        <span>${price}</span>
+        <span className="text-xs lg:text-base">${price}</span>
         <span>
           <i 
-            className="fa-solid fa-xmark text-2xl cursor-pointer"
+            className="fa-solid fa-xmark text-base lg:text-2xl cursor-pointer"
             onClick={handleRemoveCartItem}
           >
           </i>

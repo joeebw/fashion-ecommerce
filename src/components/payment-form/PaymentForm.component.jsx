@@ -57,11 +57,11 @@ function PaymentForm() {
         className='flex flex-col'
         onSubmit={paymentHandler}
         >
-        <h5 className='text-3xl mb-6 font-semibold'>Credit Card Payment</h5>
+        <h5 className='text-xl sm:text-3xl mb-6 font-semibold'>Credit Card Payment</h5>
         <CardElement/>
         <Button 
           selectButton='inverted' 
-          className='self-end mt-6'
+          className='self-end mt-6 w-24 sm:w-40 text-xs sm:text-base'
           type='submit'
           disabled={isProcessingPayment}
         >

@@ -33,8 +33,8 @@ function SignIn() {
   }
 
   return (
-    <div className='flex self-start justify-end'>
-      <div className="card mx-4 w-[450px] border-2 border-gray-700">
+    <div className='flex self-start justify-center md:justify-end'>
+      <div className="card mx-4 w-full sm:w-[450px] border-2 border-gray-700">
         <div className="card-body">
           <h3 className="text-4xl font-semibold text-center my-4">Sign In</h3>
           
@@ -59,7 +59,7 @@ function SignIn() {
               required
             />
 
-            <div className="flex justify-center gap-10">
+            <div className="flex justify-center gap-4 sm:gap-7">
               <Button type="submit" selectButton='normal'>Sign In</Button>
               <GoogleLoginButton/>
             </div>

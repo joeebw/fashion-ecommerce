@@ -11,7 +11,7 @@ const BUTTON_SIZE = {
 function Button({children, selectButton, size, className ,...otherProps}) {
   return (
     <button 
-      className={`btn min-w-[130px] ${BUTTON_TYPE[selectButton]} ${BUTTON_SIZE[size] ?? ""} ${className ?? ''}`} 
+      className={`btn ${BUTTON_TYPE[selectButton]} ${BUTTON_SIZE[size] ?? ""} ${className ?? ''}`} 
       {...otherProps}
     >
       {children}
