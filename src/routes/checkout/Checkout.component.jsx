@@ -10,8 +10,8 @@ function Checkout() {
 
   return (
     <div className="flex flex-col items-center my-10">
-      <div className="w-8/12">
-        <div className="grid grid-cols-5 justify-items-center">
+      <div className="w-11/12 lg:w-8/12">
+        <div className="grid grid-cols-5 gap-2 justify-items-center text-xs lg:text-base">
           <span>Product</span>
           <span>Description</span>
           <span>Quantity</span>

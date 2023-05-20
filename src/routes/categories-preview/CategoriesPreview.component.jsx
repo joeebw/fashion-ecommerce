@@ -6,7 +6,7 @@ function CategoriesPreview() {
   const categories = useSelector(selectCategoriesMap);
   
   return (
-    <div className='mx-9 my-6'>
+    <div className='mx-4 sm:mx-9 my-6'>
     {Object.keys(categories).map(category => {
       const products = categories[category];
       return <CategoryPreview products={products} category={category} key={category}/>

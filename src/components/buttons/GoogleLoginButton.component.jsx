@@ -12,6 +12,7 @@ function GoogleLoginButton() {
       type="button"
       onClick={buttonClickHandler}
       selectButton='google'
+      className='text-xs'
     >
       Sign In with Google
     </Button>

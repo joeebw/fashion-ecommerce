@@ -6,7 +6,7 @@ function CartTotal() {
 
   return (
     <div className="flex justify-end">
-      <span className="text-2xl">TOTAL: ${totalPrice}</span>
+      <span className="text-lg sm:text-2xl">TOTAL: ${totalPrice}</span>
     </div>
   )
 }
