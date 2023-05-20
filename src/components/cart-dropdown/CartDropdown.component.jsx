@@ -8,7 +8,7 @@ function CartDropdown() {
   const cartItems = useSelector(selectCartItems);
 
   return (
-        <div className="absolute z-20 right-11 top-16 card w-56 sm:w-80 min-h-[300px] bg-base-100 shadow-xl">
+        <div className="absolute z-20 right-11 top-16 card w-56 sm:w-80 min-h-[300px] bg-white shadow-xl">
           <div className="card-body p-5 justify-between">
             <div className='h-72 overflow-y-auto pr-6'>
               {cartItems.map(product => 
