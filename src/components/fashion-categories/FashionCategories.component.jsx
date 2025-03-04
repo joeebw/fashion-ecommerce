@@ -14,7 +14,7 @@ function FashionCategories({ categories }) {
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-      if (screenWidth < 640) {
+      if (screenWidth < 1024) {
         setSliceParams({
           value1: [0, 4],
           value2: [4, 5],
@@ -35,13 +35,13 @@ function FashionCategories({ categories }) {
 
   return (
     <div className="flex flex-col flex-1 h-full min-h-[calc(100vh-64px)]">
-      <div className="grid flex-grow grid-cols-2 gap-5 p-4 sm:grid-cols-3">
+      <div className="grid flex-grow grid-cols-2 gap-5 p-4 lg:grid-cols-3">
         {categories.slice(start1, end1).map((category) => (
           <CategoryItem key={category.id} category={category} />
         ))}
       </div>
 
-      <div className="grid flex-grow grid-cols-1 gap-5 p-4 mb-4 sm:grid-cols-2">
+      <div className="grid flex-grow grid-cols-1 gap-5 p-4 mb-4 lg:grid-cols-2">
         {categories.slice(start2, end2).map((category) => (
           <CategoryItem key={category.id} category={category} />
         ))}
